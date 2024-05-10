@@ -129,27 +129,35 @@
     <?php
     include 'config.php';
     $id = $_GET['qrcode'];
-    $sql = mysqli_query($conn, "select * from tb_undangan where id_kios = '$id' ");
+    $sql = mysqli_query($conn, "SELECT * FROM tb_undangan WHERE id_kios = $id ");
     while ($d = mysqli_fetch_array($sql)) {
     ?>
-        <h3 class="h3FontCus h3fontWelcome">Selamat Datang Tamu Undangan</h3>
-        <h3 class="h3FontCus h3fontTamu">Bapak / Ibu</h3>
-        <form method="post" id="form_hadir" class="form-inline justify-content-center">
-            <input type="text" name="id_kios" id="id_kios" value="<?php echo $d['id_kios'] ?>" style="border:none;text-align:center" hidden />
-            <input type="text" name="asal_kota" id="asal_kota" value="<?php echo $d['asal_kota'] ?>" style="border:none;text-align:center" hidden />
-            <input type="text" name="nama_owner" id="nama_owner" value="<?php echo $d['nama_owner'] ?>" style="border:none;text-align:center" hidden />
-            <input type="text" name="nama_kios" id="nama_kios" value="<?php echo $d['nama_kios'] ?>" style="border:none;text-align:center" hidden />
-            <input type="text" name="status" id="status" value="1" style="border:none;text-align:center" hidden />
 
-            <button type="submit" name="simpan" id="btnSimpan" class="button button1">Simpan Kehadiran</button>
-        </form>
 
-        <div class="fontTko">
+        <?php if ($d['status'] == 0) : ?>
+            <h3 class="h3FontCus h3fontWelcome">Selamat Datang Tamu Undangan</h3>
+            <h3 class="h3FontCus h3fontTamu">Bapak / Ibu</h3>
+            <form method="post" id="form_hadir" class="form-inline justify-content-center">
+                <input type="text" name="id_kios" id="id_kios" value="<?php echo $d['id_kios'] ?>" style="border:none;text-align:center" hidden />
+                <input type="text" name="asal_kota" id="asal_kota" value="<?php echo $d['asal_kota'] ?>" style="border:none;text-align:center" hidden />
+                <input type="text" name="nama_owner" id="nama_owner" value="<?php echo $d['nama_owner'] ?>" style="border:none;text-align:center" hidden />
+                <input type="text" name="nama_kios" id="nama_kios" value="<?php echo $d['nama_kios'] ?>" style="border:none;text-align:center" hidden />
+                <input type="text" name="status" id="status" value="1" style="border:none;text-align:center" hidden />
 
-            <h3 class="h3FontCus "><?php echo $d['nama_owner'] ?></h3>
-            <h3 class="h3FontCus fontTko1"><?php echo $d['nama_kios'] ?></h3>
-            <h3 class="h3FontCus fontTko1"><?php echo $d['asal_kota'] ?></h3>
-        </div>
+                <button type="submit" name="simpan" id="btnSimpan" class="button button1">Simpan Kehadiran</button>
+            </form>
+
+            <div class="fontTko">
+
+                <h3 class="h3FontCus "><?php echo $d['nama_owner'] ?></h3>
+                <h3 class="h3FontCus fontTko1"><?php echo $d['nama_kios'] ?></h3>
+                <h3 class="h3FontCus fontTko1"><?php echo $d['asal_kota'] ?></h3>
+            </div>
+        <?php else : ?>
+            <div class="fontTko">
+                <h3 class="h3FontCus ">TAMU TELAH REGISTRASI</h3>
+            </div>
+        <?php endif; ?>
 
     <?php } ?>
 
