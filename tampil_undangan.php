@@ -129,12 +129,10 @@
     <?php
     include 'config.php';
     $id = $_GET['qrcode'];
-    $sql = mysqli_query($conn, "SELECT * FROM tb_undangan WHERE id_kios = $id ");
+    $sql = mysqli_query($conn, "SELECT * FROM tb_undangan WHERE id_kios = '$id' ");
     while ($d = mysqli_fetch_array($sql)) {
     ?>
-
-
-        <?php if ($d['status'] == 0) : ?>
+        <?php if ($d['status'] == '0') : ?>
             <h3 class="h3FontCus h3fontWelcome">Selamat Datang Tamu Undangan</h3>
             <h3 class="h3FontCus h3fontTamu">Bapak / Ibu</h3>
             <form method="post" id="form_hadir" class="form-inline justify-content-center">
@@ -158,6 +156,7 @@
                 <h3 class="h3FontCus ">TAMU TELAH REGISTRASI</h3>
             </div>
         <?php endif; ?>
+
 
     <?php } ?>
 
