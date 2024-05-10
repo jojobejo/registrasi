@@ -1,8 +1,8 @@
 <?php
 $host = 'localhost';
-$user = 'root';
-$password = '';
-$db = 'extravaganza_undangan';
+$user = 'kiucoid_registrasi';
+$password = 'kiukarisma89';
+$db = 'kiucoid_registrasi';
 
 $conn = mysqli_connect($host, $user, $password, $db);
 if ($conn) {
