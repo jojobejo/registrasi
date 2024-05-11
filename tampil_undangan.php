@@ -146,8 +146,6 @@
             </form>
 
             <div class="fontTko">
-
-                <h3 class="h3FontCus "><?php echo $d['nama_owner'] ?></h3>
                 <h3 class="h3FontCus fontTko1"><?php echo $d['nama_kios'] ?></h3>
                 <h3 class="h3FontCus fontTko1"><?php echo $d['asal_kota'] ?></h3>
             </div>
