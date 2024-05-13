@@ -61,7 +61,7 @@ header("Pragma: no-cache");
     <div class="form_id">
         <div class="row">
             <div class="col">
-                <form action="tampil_undangan.php">
+                <form action="tampil_undangan_principal.php">
                     <input class="form-control form-control-lg" name="qrcode" type="text" placeholder="" autocomplete="off">
                 </form>
             </div>

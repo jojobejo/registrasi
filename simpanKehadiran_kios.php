@@ -7,14 +7,14 @@ $nama_owner = $_POST['nama_owner'];
 $nama_kios  = $_POST['nama_kios'];
 $status     = $_POST['status'];
 
-$sql = mysqli_query($conn, "UPDATE tb_undangan SET 
+$sql = mysqli_query($conn, "UPDATE tb_kios SET 
 asal_kota='$asal_kota', nama_owner='$nama_owner', nama_kios='$nama_kios', status='$status'
-where id_kios = '$id_kios'");
+where kode_undangan = '$id_kios'");
 
-if($sql){
+$sqlin = mysqli_query($conn, "INSERT INTO `tb_hadir_kios`(`kode_undangan`, `asal_kota`, `nama_kios`, `status`) VALUES ('$id_kios','$asal_kota','$nama_kios','1')");
+
+if ($sql & $sqlin) {
     echo "<div style='color:green'> DATA BERHASIL DISIMPAN </div>";
-}else{
+} else {
     echo "<div style='color:red'> DATA GAGAL DISIMPAN </div>";
 }
-
-?>
