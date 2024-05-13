@@ -95,7 +95,7 @@
 
     .button {
         position: absolute;
-        top: 500px;
+        top: 600px;
         left: 380px;
 
         background-color: #eab301;
@@ -143,6 +143,14 @@
         /* Green */
         color: black;
     }
+
+    .img_lv {
+        position: absolute;
+        top: 125px;
+        left: 500px;
+        width: 300px;
+        height: 150px;
+    }
 </style>
 
 <body>
@@ -164,11 +172,19 @@
 
                 <button type="submit" name="simpan" id="btnSimpan" class="button button1">Simpan Kehadiran</button>
             </form>
-
-            <div class="fontTko">
-                <h3 class="h3FontCus fontTko1"><?php echo $d['nama_kios'] ?></h3>
-                <h3 class="h3FontCus fontTko1"><?php echo $d['asal_kota'] ?></h3>
-            </div>
+            <?php if ($d['lv_user'] == "GOLD") : ?>
+                <div class="fontTko">
+                    <h3 class="h3FontCus fontTko1"><?php echo $d['nama_kios'] ?></h3>
+                    <h3 class="h3FontCus fontTko1"><?php echo $d['asal_kota'] ?></h3>
+                    <img src="img/gold.png" class="img_lv">
+                </div>
+            <?php else : ?>
+                <div class="fontTko">
+                    <h3 class="h3FontCus fontTko1"><?php echo $d['nama_kios'] ?></h3>
+                    <h3 class="h3FontCus fontTko1"><?php echo $d['asal_kota'] ?></h3>
+                    <img src="img/platinum.png" class="img_lv">
+                </div>
+            <?php endif; ?>
         <?php else : ?>
             <div class="fontTko">
                 <h3 class="h3FontCus ">TAMU TELAH REGISTRASI</h3>
