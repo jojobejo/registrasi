@@ -70,6 +70,25 @@
         text-shadow: 0px 0px 26px #ffffff
     }
 
+    .warp_kode {
+        background-color: #ffffff;
+        background-size: cover;
+        height: 50px;
+        width: 150px;
+        position: absolute;
+    }
+
+    .h3fontkode {
+        font-family: "Russo One", sans-serif;
+        /* text-decoration: underline; */
+        font-weight: 200;
+        font-size: 40px;
+        color: #eab301;
+        -webkit-text-stroke-width: 2px;
+        -webkit-text-stroke-color: black;
+        text-shadow: 0px 0px 26px #ffffff
+    }
+
     .h3fontWelcome {
         position: absolute;
         top: 190px;
@@ -90,7 +109,7 @@
 
     .fontTko1 {
         text-align: center;
-        margin-top: -10px;
+        margin-top: 50px;
     }
 
     .button {
@@ -162,6 +181,9 @@
 
                 <button type="submit" name="simpan" id="btnSimpan" class="button button1">Simpan Kehadiran</button>
             </form>
+            <div class="warp_kode">
+                <h3 class="h3fontkode"><?php echo $d['kode_undangan'] ?></h3>
+            </div>
 
             <div class="fontTko">
                 <h3 class="h3FontCus fontTko1"><?php echo $d['nama_pt'] ?></h3>
@@ -195,6 +217,14 @@
         $('#btnback').click(function() {
             window.location.href = "index_principal.php"
         });
+
+        window.onkeydown = function(event) {
+
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                document.querySelector('#btnSimpan').click();
+            }
+        }
     </script>
 
 </body>

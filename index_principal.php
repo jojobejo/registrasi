@@ -31,29 +31,30 @@ header("Pragma: no-cache");
 
     .form_id {
         position: absolute;
-        top: 400px;
-        left: 220px;
+        top: 500px;
+        left: 230px;
 
     }
 
     .form-control-lg {
         height: 50px;
-        width: 820px;
+        width: 850px;
     }
 
     .h3FontCus {
         font-family: "DynaPuff", sans-serif;
         /* text-decoration: underline; */
         font-weight: bold;
-        font-size: 50px;
+        font-size: 75px;
         position: absolute;
-        top: 320px;
-        left: 250px;
+        top: 350px;
+        left: 70px;
         color: #eab301;
         -webkit-text-stroke-width: 0.1px;
         -webkit-text-stroke-color: black;
         text-shadow: 0px 0px 26px #ffffff
     }
+</style>
 </style>
 
 <body>

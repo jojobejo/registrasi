@@ -1,7 +1,12 @@
 <?php
+// $host = 'localhost';
+// $user = 'kiucoid_registrasi';
+// $password = 'kiukarisma89';
+// $db = 'kiucoid_registrasi';
+
 $host = 'localhost';
-$user = 'kiucoid_registrasi';
-$password = 'kiukarisma89';
+$user = 'root';
+$password = '';
 $db = 'kiucoid_registrasi';
 
 $conn = mysqli_connect($host, $user, $password, $db);
