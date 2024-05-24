@@ -1,9 +1,12 @@
 <?php
+
+// DOMAIN
 $host = 'localhost';
 $user = 'kiucoid_registrasi';
 $password = 'kiukarisma89';
 $db = 'kiucoid_registrasi';
 
+// LOCALHOST
 // $host = 'localhost';
 // $user = 'root';
 // $password = '';
