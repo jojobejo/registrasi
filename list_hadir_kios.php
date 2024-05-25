@@ -18,19 +18,41 @@
 
 <body>
 
+    <?php
+    include 'config.php';
+    $tothadir = "SELECT
+    COUNT(tb_kios.status) AS total_hadir , 
+    COUNT(CASE status WHEN '1' THEN 1 ELSE null END) AS hadir,
+    COUNT(CASE status WHEN '0' THEN 1 ELSE null END) as not_hadir
+    FROM `tb_kios`
+    ";
+    $total_h = mysqli_query($conn, $tothadir);
+    ?>
+
     <section class="container">
         <div class="x-container">
             <div class="mt-2 mb-2">
                 <button onclick="window.print()">print kehadiran</button>
             </div>
+            <?php while ($rows = mysqli_fetch_array($total_h)) :;
+                $phadir = number_format((float)($rows['hadir'] / $rows['total_hadir']) * 100, 2, ',', '');
+            ?>
+                <div class="mt-2 mb-2 ml-2">
+                    <h4>Total Persentase Kehadiran : <?= $phadir  ?>%</h4>
+                </div>
+                <!-- <div class="mt-2 mb-2 ml-2">
+                    <h4>Total Undangan Hadir : <?= $rows['hadir'] ?></h4>
+                </div>
+                <div class="mt-2 mb-2 ml-2">
+                    <h4>Total Undangan Belum Hadir : <?= $rows['not_hadir'] ?></h4>
+                </div> -->
+            <?php endwhile; ?>
         </div>
         <center>
 
             <?php
             include 'config.php';
-            $qhadir = " SELECT tb_undangan.*,tb_status.*
-                        FROM tb_undangan
-                        JOIN tb_status ON tb_status.id_status = tb_undangan.status";
+            $qhadir = " SELECT * FROM `tb_kios` ";
             $no = 1;
             $hasil = mysqli_query($conn, $qhadir);
             ?>
@@ -41,19 +63,23 @@
                         <tr>
                             <th>No</th>
                             <th>Nama Kios</th>
-                            <th>Nama Owner</th>
                             <th>Asal Kota</th>
                             <th>Status Kehadiran</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php while ($row = mysqli_fetch_array($hasil)) :; ?>
+                        <?php while ($row = mysqli_fetch_array($hasil)) :;
+
+                        ?>
                             <tr>
                                 <th><?= $no++ ?></th>
                                 <th><?= $row['nama_kios'] ?></th>
-                                <th><?= $row['nama_owner'] ?></th>
                                 <th><?= $row['asal_kota'] ?></th>
-                                <th><?= $row['ket_status'] ?></th>
+                                <?php if ($row['status'] == '1') : ?>
+                                    <th>HADIR</th>
+                                <?php elseif ($row['status'] == '0') : ?>
+                                    <th>TIDAK HADIR</th>
+                                <?php endif; ?>
                             </tr>
                         <?php endwhile; ?>
                     </tbody>
@@ -66,7 +92,9 @@
 <script type="text/javascript" src="DataTables/datatables.min.js"></script>
 <script>
     $(document).ready(function() {
-        $('#tbhadir').DataTable();
+        $('#tbhadir').DataTable({
+            paging: false
+        });
     });
 </script>
 
