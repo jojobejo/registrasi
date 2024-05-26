@@ -62,6 +62,7 @@
                     <thead class="thead-dark">
                         <tr>
                             <th>No</th>
+                            <th>Kode Tamu</th>
                             <th>Nama Kios</th>
                             <th>Asal Kota</th>
                             <th>Status Kehadiran</th>
@@ -73,6 +74,7 @@
                         ?>
                             <tr>
                                 <th><?= $no++ ?></th>
+                                <th><?= $row['kode_undangan'] ?></th>
                                 <th><?= $row['nama_kios'] ?></th>
                                 <th><?= $row['asal_kota'] ?></th>
                                 <?php if ($row['status'] == '1') : ?>

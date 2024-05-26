@@ -62,9 +62,8 @@
                     <thead class="thead-dark">
                         <tr>
                             <th>No</th>
+                            <th>Nama Tamu</th>
                             <th>Kode Tamu</th>
-                            <th>Nama Kios</th>
-                            <th>Status Kehadiran</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -73,13 +72,7 @@
                         ?>
                             <tr>
                                 <th><?= $no++ ?></th>
-                                <th><?= $row['kode_undangan'] ?></th>
                                 <th><?= $row['nama_pt'] ?></th>
-                                <?php if ($row['status'] == '1') : ?>
-                                    <th>HADIR</th>
-                                <?php elseif ($row['status'] == '0') : ?>
-                                    <th>TIDAK HADIR</th>
-                                <?php endif; ?>
                             </tr>
                         <?php endwhile; ?>
                     </tbody>
